@@ -1,0 +1,57 @@
+[build-system]
+requires = ["setuptools>=77", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "storyboard-weaver"
+version = "0.2.0"
+description = "Turn a short story idea into a validated, scene-by-scene film storyboard with optional generated frames."
+readme = "README.md"
+requires-python = ">=3.11"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [{ name = "Aya Nabil" }]
+keywords = ["storyboard", "film", "llm", "gemini", "openai", "text-to-image"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Multimedia :: Graphics",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+dependencies = [
+    "httpx>=0.27,<1",
+    "matplotlib>=3.8",
+    "pydantic>=2.7,<3",
+    "python-dotenv>=1.0",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8", "ruff>=0.6"]
+
+[project.scripts]
+storyboard-weaver = "storyboard_weaver.cli:main"
+
+[project.urls]
+Repository = "https://github.com/1AyaNabil1/Ai-storyboard-Weaver"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+extend-exclude = ["notebooks"]
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "B", "UP", "SIM", "RUF"]
+# "word list".split() reads better than a hundred-line list literal.
+ignore = ["SIM905"]
+
+[tool.ruff.lint.isort]
+known-first-party = ["storyboard_weaver"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra"

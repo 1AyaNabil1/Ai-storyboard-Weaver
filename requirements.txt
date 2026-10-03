@@ -1,0 +1,6 @@
+# Runtime dependencies, pinned to the versions the test suite runs against.
+# Install with: pip install -r requirements.txt && pip install --no-deps -e .
+httpx==0.28.1
+matplotlib==3.11.2
+pydantic==2.13.5
+python-dotenv==1.2.4
